@@ -26,10 +26,9 @@ python3 severity_scorer.py
 
 Takes a drone photo and checks two things:
 
-1. Does the image have GPS coordinates embedded in it? If not, you can't confirm it was taken at the claimed property.
-2. Does it have a timestamp? If not, the photo might have been edited or reused from somewhere else.
+1. Runs the image through a pretrained ResNet-18 neural network to extract a feature vector — a list of numbers representing what's visually in the image. These feed into a fraud classifier once labeled training data is available.
 
-It also runs the image through a pretrained neural network (ResNet-18) to extract visual features — these would feed into a fraud classifier once there's real labeled data to train on.
+2. Reads the image's EXIF metadata and flags missing GPS coordinates or a missing timestamp — both of which should always be present in a legitimate drone photo.
 
 Run it:
 ```bash
@@ -48,4 +47,4 @@ pip3 install torch torchvision pillow numpy
 
 ## Notes
 
-The scoring weights are based on general domain knowledge, not real Travelers claim data. Next step is calibrating them with historical data and training an actual classifier for the fraud detection side.
+The scoring weights are based on research, not real Travelers claim data. Next step is calibrating them with historical data and training an actual classifier on the fraud detection side. Long term this pipeline will be part of a live demo on the final proposal website.

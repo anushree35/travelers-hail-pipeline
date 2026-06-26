@@ -1,12 +1,13 @@
 """
 fraud_detection.py
 ------------------
-Checks a drone image for fraud signals using two methods:
-1. Extracts visual features using a pretrained ResNet-18
+Checks a drone image for fraud signals two ways:
+1. Runs it through a pretrained ResNet-18 to extract visual features
 2. Reads the image's EXIF metadata to check for GPS and timestamp
 """
 
 import os
+import ssl
 import datetime
 import numpy as np
 import torch
@@ -14,10 +15,11 @@ import torchvision.models as models
 import torchvision.transforms as transforms
 from PIL import Image, ExifTags
 
+# Fix SSL certificate issue on Mac
+ssl._create_default_https_context = ssl._create_unverified_context
+
 
 # --- Step 1: Load a sample image ---
-# Using a placeholder (random noise) if no real image is provided.
-# In practice, swap this path for an actual drone photo.
 
 SAMPLE_IMAGE_PATH = "sample_roof.jpg"
 
@@ -33,7 +35,6 @@ print(f"Image loaded: {SAMPLE_IMAGE_PATH} | Size: {image.size}")
 
 
 # --- Step 2: Preprocess for ResNet ---
-# ResNet expects 224x224 images normalized to ImageNet stats
 
 preprocess = transforms.Compose([
     transforms.Resize((224, 224)),
@@ -42,15 +43,15 @@ preprocess = transforms.Compose([
                          std=[0.229, 0.224, 0.225]),
 ])
 
-input_tensor = preprocess(image).unsqueeze(0)  # add batch dimension
+input_tensor = preprocess(image).unsqueeze(0)
 
 
 # --- Step 3: Extract features using pretrained ResNet-18 ---
-# We remove the last layer so we get a feature vector instead of a class label
+# Strip the last layer so we get a feature vector instead of a class label.
+# These numbers represent what's visually in the image.
 
 def load_feature_extractor():
     resnet = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
-    # Strip off the final classification layer
     extractor = torch.nn.Sequential(*list(resnet.children())[:-1])
     extractor.eval()
     return extractor
@@ -63,12 +64,11 @@ def extract_features(model, tensor):
 print("\nLoading ResNet-18...")
 model = load_feature_extractor()
 features = extract_features(model, input_tensor)
-print(f"Feature vector extracted: {features.shape[0]} values")
-print(f"  min={features.min():.4f}, max={features.max():.4f}, mean={features.mean():.4f}")
+print(f"Feature vector: {features.shape[0]} values extracted")
 
 
 # --- Step 4: Check EXIF metadata for fraud signals ---
-# Legitimate drone photos should have GPS coordinates and a timestamp.
+# A real drone photo should always have GPS and a timestamp.
 # Missing either one is a red flag.
 
 def check_exif_metadata(image_path, claimed_storm_date=None):
@@ -125,7 +125,7 @@ for flag in result["flags"]:
     print(f"  ! {flag}")
 
 
-# --- Step 5: Final fraud risk level ---
+# --- Step 5: Fraud risk level ---
 
 def fraud_risk(metadata_result):
     n = len(metadata_result["flags"])
