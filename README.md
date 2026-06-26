@@ -1,83 +1,51 @@
 # Travelers Hail Damage Assessment Pipeline
 
-A computer vision pipeline for assessing hail damage severity and detecting potential fraud
-in drone imagery — built as part of the Travelers Insurance x UConn AI/ML Research Fellowship.
+Built for the Travelers Insurance x UConn AI/ML Research Fellowship.
+
+The goal is to automate the first pass of a hail damage claim — figure out how bad the damage is, and flag anything that looks suspicious.
 
 ---
 
-## What This Does
+## What's in here
 
-This project has two components:
+### `severity_scorer.py`
 
-### 1. `severity_scorer.py` — Damage Severity Scoring
+Takes three inputs:
+- How big the hail was (in inches)
+- What the roof is made of (asphalt shingle, metal, clay tile, concrete tile)
+- How old the roof is
 
-Takes three inputs about a property and hail event:
+Each one gets a score, they add up, and you get a damage tier from 1 to 5 with a recommended action for the adjuster.
 
-| Input | Description |
-|-------|-------------|
-| Hail size (inches) | Diameter of hailstones during the storm |
-| Roof material | `asphalt shingle`, `metal`, `clay tile`, or `concrete tile` |
-| Roof age (years) | How old the roof is |
-
-Each factor is scored separately and combined into a total (0–100). That total maps to a
-**damage tier from 1 to 5**, along with a plain-English description and a recommended
-claims action.
-
-**Run it:**
+Run it:
 ```bash
-python severity_scorer.py
+python3 severity_scorer.py
 ```
-This runs five built-in test cases covering the full range of tiers.
 
----
+### `fraud_detection.py`
 
-### 2. `fraud_detection.ipynb` — Fraud Detection Pipeline
+Takes a drone photo and checks two things:
 
-A Jupyter notebook that runs two checks on a roof image:
+1. Does the image have GPS coordinates embedded in it? If not, you can't confirm it was taken at the claimed property.
+2. Does it have a timestamp? If not, the photo might have been edited or reused from somewhere else.
 
-1. **Visual Feature Extraction** — Uses a pretrained ResNet-18 (via PyTorch) to compute
-   a 512-dimensional feature vector from the image. This vector can feed into a downstream
-   fraud classifier once training data is available.
+It also runs the image through a pretrained neural network (ResNet-18) to extract visual features — these would feed into a fraud classifier once there's real labeled data to train on.
 
-2. **EXIF Metadata Analysis** — Reads the image's embedded metadata and flags:
-   - Missing GPS coordinates (can't confirm the photo was taken at the claimed property)
-   - Missing timestamp (suggests metadata was stripped, possibly after editing)
-   - Timestamp that predates the claimed storm date
-
-A final fraud risk level (LOW / MEDIUM / HIGH) is computed from the number of flags found.
-
-**Run it:**
+Run it:
 ```bash
-jupyter notebook fraud_detection.ipynb
+python3 fraud_detection.py
 ```
-If you don't have a real drone image handy, the notebook auto-generates a placeholder so
-you can run the full pipeline end-to-end right away.
 
 ---
 
 ## Setup
 
-Install dependencies:
 ```bash
-pip install torch torchvision pillow numpy jupyter
-```
-
-No GPU required — everything runs on CPU for this demo.
-
----
-
-## Project Structure
-
-```
-travelers-hail-pipeline/
-├── severity_scorer.py       # Damage tier scoring script
-├── fraud_detection.ipynb    # Fraud detection notebook
-└── README.md
+pip3 install torch torchvision pillow numpy
 ```
 
 ---
 
-## Author
+## Notes
 
-Anushree Sabade — UConn Computer Science  
-AI/ML Research Fellowship, Travelers Insurance Partnership
+The scoring weights are based on general domain knowledge, not real Travelers claim data. Next step is calibrating them with historical data and training an actual classifier for the fraud detection side.
