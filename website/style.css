@@ -1,5 +1,5 @@
 body {
-  background-color: #11023b;
+  background-color: #110101;
   color: #f0f0f0;
   font-family: Arial, sans-serif;
 }
@@ -103,4 +103,15 @@ nav a:hover {
   line-height: 1.7;
   color: #cfcfcf;
   margin-bottom: 16px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
