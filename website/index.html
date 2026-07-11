@@ -2,12 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eye in the Sky</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav>
+<div class="streak" id="streak"></div>
+
+<nav>
+  <div class="nav-logo">Eye in the Sky<span class="dot">.</span></div>
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="#problem">The Problem</a></li>
@@ -19,7 +26,8 @@
 </nav>
 
 <section class="hero" id="home">
-  <h1>Eye in the Sky</h1>
+  <div class="eyebrow"><span class="pulse-dot"></span> AI-POWERED HAIL DAMAGE PIPELINE &middot; TRAVELERS PROPOSAL</div>
+  <h1>Eye in the <span class="outline-text">Sky</span></h1>
   <p>AI-powered hail damage detection and fraud reduction for insurance claims</p>
 
   <div class="stats">
@@ -40,9 +48,23 @@
       <p class="stat-label">Fraud Reduction</p>
     </div>
   </div>
+
+  <div class="scroll-badge">
+    <svg viewBox="0 0 120 120" class="badge-ring">
+      <path id="circlePath" d="M 60,60 m -50,0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0" fill="none"/>
+      <text font-size="7.5" letter-spacing="2">
+        <textPath href="#circlePath">HAIL DETECTION &bull; AI PIPELINE &bull; EYE IN THE SKY &bull; </textPath>
+      </text>
+    </svg>
+    <div class="badge-center">&darr;</div>
+  </div>
 </section>
 
-<section id="problem">
+<section id="problem" class="content-section reveal">
+  <span class="section-label">01 / The Problem</span>
+  <h2>The Problem</h2>
+  <p>Hail is one of the most frequent and costly perils insurers face — and it's also one of the hardest to assess fairly. A single storm can generate thousands of claims in a matter of days, but verifying actual damage on each roof still relies heavily on manual inspection, which is slow, inconsistent between adjusters, and expensive to scale during a surge.</p>
+  <p>That gap between "storm hits" and "claim resolved" creates two problems at once: legitimate claims sit in a backlog while inspectors work through a growing queue, and unverified damage becomes an easy target for inflated or fraudulent claims. Insurers need a faster, more consistent way to separate real, severe damage from minor or fabricated claims — without slowing down the process for customers who need help fast.</p>
 </section>
 
 <section id="solution">
@@ -57,5 +79,6 @@
 <section id="team">
 </section>
 
+<script src="script.js"></script>
 </body>
 </html>
