@@ -20,6 +20,29 @@ body {
   margin: 0;
 }
 
+/* Ambient background rain, drops generated in script.js */
+.rain-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rain-drop {
+  position: absolute;
+  top: -5%;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, transparent, var(--accent), #eaf6ff);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from { transform: translateY(-10vh); }
+  to { transform: translateY(110vh); }
+}
+
 /* Shooting hailstone streak, position driven by scroll % in script.js */
 .streak {
   position: fixed;

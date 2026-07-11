@@ -25,3 +25,17 @@ function updateStreak() {
 
 window.addEventListener("scroll", updateStreak);
 updateStreak();
+
+const rainContainer = document.getElementById("rain");
+const dropCount = 30;
+
+for (let i = 0; i < dropCount; i++) {
+  const drop = document.createElement("div");
+  drop.className = "rain-drop";
+  drop.style.left = Math.random() * 100 + "%";
+  drop.style.height = 15 + Math.random() * 25 + "px";
+  drop.style.opacity = 0.15 + Math.random() * 0.35;
+  drop.style.animationDuration = 3 + Math.random() * 5 + "s";
+  drop.style.animationDelay = -Math.random() * 8 + "s";
+  rainContainer.appendChild(drop);
+}
