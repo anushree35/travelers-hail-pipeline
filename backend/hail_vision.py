@@ -45,7 +45,7 @@ def assess_roof_photo(image_path):
         ],
     )
 
-    return response.output[0]
+    return response.output_text
 
 
 if __name__ == "__main__":
