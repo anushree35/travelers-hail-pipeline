@@ -64,35 +64,35 @@
 <section id="problem" class="content-section reveal">
   <span class="section-label">01 / The Problem</span>
   <h2>The Problem</h2>
-  <p>Hail is one of the most frequent and costly perils insurers face — and it's also one of the hardest to assess fairly. A single storm can generate thousands of claims in a matter of days, but verifying actual damage on each roof still relies heavily on manual inspection, which is slow, inconsistent between adjusters, and expensive to scale during a surge.</p>
-  <p>That gap between "storm hits" and "claim resolved" creates two problems at once: legitimate claims sit in a backlog while inspectors work through a growing queue, and unverified damage becomes an easy target for inflated or fraudulent claims. Insurers need a faster, more consistent way to separate real, severe damage from minor or fabricated claims — without slowing down the process for customers who need help fast.</p>
+  <p>Hail is one of the most frequent and costly perils insurers face, and it's also one of the hardest to assess fairly. A single storm can generate thousands of claims in a matter of days, but verifying actual damage on each roof still relies heavily on manual inspection, which is slow, inconsistent between adjusters, and expensive to scale during a surge.</p>
+  <p>That gap between "storm hits" and "claim resolved" creates two problems at once: legitimate claims sit in a backlog while inspectors work through a growing queue, and unverified damage becomes an easy target for inflated or fraudulent claims. Insurers need a faster, more consistent way to separate real, severe damage from minor or fabricated claims, without slowing down the process for customers who need help fast.</p>
 </section>
 
 <section id="solution" class="content-section reveal">
   <span class="section-label">02 / Our Solution</span>
   <h2>Our Solution</h2>
   <p>Eye in the Sky pairs two complementary systems: an interpretable, rules-based severity score, and an AI vision model that verifies damage directly from photos. Together, they turn storm and imagery data into a faster, more consistent damage assessment process.</p>
-  <p>The severity score is calculated the moment a storm hits, using hail size, roof material, and roof age — every score is fully explainable, tier by tier, which matters in a regulated claims process where adjusters and regulators need to know exactly why a property was flagged. The AI model then verifies that estimate against real roof imagery, confirming visually what the rules-based score predicted numerically. Together, they let Travelers triage every property in a storm's path immediately, then confirm the estimate visually before an adjuster is ever dispatched.</p>
+  <p>The severity score is calculated the moment a storm hits, using hail size, roof material, and roof age. Every score is fully explainable, tier by tier, which matters in a regulated claims process where adjusters and regulators need to know exactly why a property was flagged. The AI model then verifies that estimate against real roof imagery, confirming what the rules-based score predicted. Together, they let Travelers triage every property in a storm's path immediately, then confirm the estimate visually before an adjuster is ever dispatched.</p>
   <ul class="gap-list">
-    <li><strong>Property-Level Hail Verification</strong> — a rules-based score combining hail size, roof material, and roof age into one damage score per property.</li>
-    <li><strong>Multi-Tier Severity Scoring</strong> — five hail-specific tiers, each mapped to a concrete claims action instead of a binary total-loss call.</li>
-    <li><strong>Before/After Comparison Pipeline</strong> — flags properties where post-storm damage doesn't match the storm's known footprint.</li>
-    <li><strong>Automated Fraud Detection</strong> — screens every submitted photo through metadata and forensic checks before an adjuster sees it, with AI-based image forensics planned as the model matures.</li>
+    <li><strong>Property-Level Hail Verification:</strong> a rules-based score combining hail size, roof material, and roof age into one damage score per property.</li>
+    <li><strong>Multi-Tier Severity Scoring:</strong> five hail-specific tiers, each mapped to a concrete claims action instead of a binary total-loss call.</li>
+    <li><strong>Before/After Comparison Pipeline:</strong> flags properties where post-storm damage doesn't match the storm's known footprint.</li>
+    <li><strong>Automated Fraud Detection:</strong> screens every submitted photo through metadata and forensic checks before an adjuster sees it, with AI-based image forensics planned as the model matures.</li>
   </ul>
 </section>
 
 <section id="fraud" class="content-section reveal">
   <span class="section-label">03 / Fraud Detection</span>
   <h2>Fraud Detection</h2>
-  <p>Every submitted claim photo runs through an automated check before it ever reaches an adjuster's desk. Today, that means metadata verification — flagging a missing GPS coordinate or timestamp, both of which a legitimate photo should always have. As the model matures, this expands to pixel-level artifact detection for signs of digital editing, and cross-referencing against neighboring property imagery from the same storm.</p>
-  <p>Fairness matters here as much as accuracy. The system never auto-denies a claim — it only flags submissions for closer review, and every flag comes with the specific evidence behind it, so an adjuster, not an algorithm, makes the final call. That keeps the process fast for the honest majority of claims while still catching the small share that warrant a second look.</p>
+  <p>Every submitted claim photo runs through an automated check before it ever reaches an adjuster's desk. Today, that means metadata verification: flagging a missing GPS coordinate or timestamp, both of which a legitimate photo should always have. As the model matures, this expands to pixel-level artifact detection for signs of digital editing, and cross-referencing against neighboring property imagery from the same storm.</p>
+  <p>Fairness matters here as much as accuracy. The system never auto-denies a claim. It only flags submissions for closer review, and every flag comes with the specific evidence behind it, so a human adjuster reviews it and makes the final call. That keeps the process fast for the honest majority of claims while still catching the small share that warrant a second look.</p>
 </section>
 
 <section id="pilot" class="content-section reveal">
   <span class="section-label">04 / Pilot &amp; Business Case</span>
   <h2>Pilot Program &amp; Business Case</h2>
-  <p>We're recommending a phased pilot rather than a full rollout: start with one region during a single hail season, run the pipeline alongside Travelers' existing manual process rather than replacing it, and directly compare outcomes — inspection turnaround time, claim accuracy, and confirmed fraud cases.</p>
-  <p>Based on early modeling, the pipeline is projected to detect hail damage at 92–95% accuracy, cut inspection time by roughly 70%, and support meaningfully more verified fraud catches without adding headcount. A successful pilot season gives Travelers hard numbers, not projections, before deciding on a wider rollout.</p>
+  <p>We're recommending a phased pilot rather than a full rollout. Start with one region during a single hail season, run the pipeline alongside Travelers' existing manual process instead of replacing it, and directly compare outcomes: inspection turnaround time, claim accuracy, and confirmed fraud cases.</p>
+  <p>Based on early modeling, the pipeline is projected to detect hail damage at 92-95% accuracy and cut inspection time by roughly 70%, while supporting meaningfully more verified fraud catches without adding headcount. A successful pilot season gives Travelers hard numbers, not projections, before deciding on a wider rollout.</p>
   <div class="mini-stats">
     <div class="mini-stat">
       <span class="mini-stat-number">92-95%</span>
@@ -117,7 +117,7 @@
     <div class="team-card">
       <h3>Kyle</h3>
       <p class="team-role">Material Science &amp; Thresholds</p>
-      <p>Defines the impact thresholds for how different roofing materials respond to hail of a given size — the physics baseline the entire scoring system rests on.</p>
+      <p>Defines the impact thresholds for how different roofing materials respond to hail of a given size. This is the physics baseline the entire scoring system rests on.</p>
     </div>
     <div class="team-card">
       <h3>Anushree</h3>
