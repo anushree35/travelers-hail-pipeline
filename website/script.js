@@ -27,7 +27,7 @@ window.addEventListener("scroll", updateStreak);
 updateStreak();
 
 const rainContainer = document.getElementById("rain");
-const dropCount = 30;
+const dropCount = 10;
 
 for (let i = 0; i < dropCount; i++) {
   const drop = document.createElement("div");
