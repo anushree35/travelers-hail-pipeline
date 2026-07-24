@@ -19,9 +19,12 @@
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="#problem">The Problem</a></li>
+    <li><a href="#travelers">What Travelers Has</a></li>
+    <li><a href="#landscape">The Landscape</a></li>
     <li><a href="#solution">Our Solution</a></li>
     <li><a href="#fraud">Fraud Detection</a></li>
     <li><a href="#pilot">Pilot & Business Case</a></li>
+    <li><a href="#example">Real Example</a></li>
     <li><a href="#team">Team</a></li>
   </ul>
 </nav>
@@ -67,8 +70,53 @@
   <p>Hail is one of the most frequent and costly perils insurers face, and one of the hardest to assess fairly. Manual inspection after a storm is slow and inconsistent, which creates a backlog of claims and leaves room for inflated or fraudulent ones to slip through.</p>
 </section>
 
+<section id="travelers" class="content-section reveal">
+  <span class="section-label">02 / What Travelers Has</span>
+  <h2>What Travelers Has</h2>
+  <p>Travelers has spent seven years building real geospatial capability: a National Catastrophe Command Center that tracks weather in real time, a proprietary platform that flags impacted properties before claims are filed, and over 700 FAA-certified drone pilots. They already use Nearmap's ImpactResponse imagery at sub-3-inch resolution after major storms.</p>
+  <blockquote class="quote-block">
+    "We know the precise size of hail that impacts an area. Since we're armed with customer location data and know the type of damage certain diameter hail causes, we can estimate with reasonable certainty the severity of the losses."
+    <cite>Chris Day, Travelers Catastrophe Response</cite>
+  </blockquote>
+  <p>That confirms they already have hail size tied to location. What's missing is AI verification at the individual property level.</p>
+  <ul class="gap-list">
+    <li><strong>No hail-specific model:</strong> current damage classification is binary, total loss or not.</li>
+    <li><strong>No manipulated photo detection:</strong> nothing catches AI-generated claim images.</li>
+    <li><strong>No property-level comparison:</strong> before/after analysis exists for wildfire, not hail.</li>
+  </ul>
+</section>
+
+<section id="landscape" class="content-section reveal">
+  <span class="section-label">03 / The Landscape</span>
+  <h2>The Landscape</h2>
+  <p>Several companies are already active in this space, including one Travelers already works with.</p>
+  <div class="competitor-grid">
+    <div class="competitor-card">
+      <h3>Nearmap</h3>
+      <p>ImpactTriage and ImpactAssessment AI for tiered damage classification. Travelers already uses this platform.</p>
+    </div>
+    <div class="competitor-card">
+      <h3>USAA</h3>
+      <p>Uses generative AI to compare before and after aerial images and can initiate claims within minutes.</p>
+    </div>
+    <div class="competitor-card">
+      <h3>State Farm</h3>
+      <p>326 AI patents and an AI-driven claims triage system, with a new partnership announced this year.</p>
+    </div>
+    <div class="competitor-card">
+      <h3>EagleView</h3>
+      <p>Drone imagery for roof inspections. Carriers using it resolve up to 1.5x more claims per day.</p>
+    </div>
+    <div class="competitor-card">
+      <h3>Roof Hawk AI</h3>
+      <p>Hail-specific autonomous drones that distinguish real damage from false positives.</p>
+    </div>
+  </div>
+  <p>Across the industry, AI-enhanced fraud cases grew from 20,000 in 2022 to over 80,000 in 2025, a 4x increase in three years.</p>
+</section>
+
 <section id="solution" class="content-section reveal">
-  <span class="section-label">02 / Our Solution</span>
+  <span class="section-label">04 / Our Solution</span>
   <h2>Our Solution</h2>
   <p>Eye in the Sky pairs two systems: a rules-based severity score, and an AI model that verifies damage from photos. Together, they help Travelers triage properties faster after a storm.</p>
   <ul class="gap-list">
@@ -80,13 +128,13 @@
 </section>
 
 <section id="fraud" class="content-section reveal">
-  <span class="section-label">03 / Fraud Detection</span>
+  <span class="section-label">05 / Fraud Detection</span>
   <h2>Fraud Detection</h2>
   <p>Every claim photo runs through a metadata check before an adjuster sees it, flagging things like a missing GPS coordinate or timestamp. It only flags for review, a human adjuster still makes the final call, so the process stays fast for honest claims while catching the ones that need a second look.</p>
 </section>
 
 <section id="pilot" class="content-section reveal">
-  <span class="section-label">04 / Pilot &amp; Business Case</span>
+  <span class="section-label">06 / Pilot &amp; Business Case</span>
   <h2>Pilot Program &amp; Business Case</h2>
   <p>We're recommending a phased pilot: one region, one hail season, run alongside Travelers' existing process to directly compare results before a wider rollout.</p>
   <div class="mini-stats">
@@ -105,8 +153,21 @@
   </div>
 </section>
 
+<section id="example" class="content-section reveal">
+  <span class="section-label">07 / Real Example</span>
+  <h2>Real Example</h2>
+  <p>This isn't a mockup. Here's an actual roof photo run through our AI model, with the real output it produced.</p>
+  <div class="example-card">
+    <img src="images/roof-example.jpg" alt="Roof photo with hail damage used for testing" class="example-image">
+    <div class="example-result">
+      <span class="example-tier">Tier 3, Moderate Damage</span>
+      <p>Asphalt composition shingles with multiple circular hail impact marks and localized granule loss. Several impacts expose the darker shingle mat, consistent with moderate damage that would shorten shingle life and likely require repair.</p>
+    </div>
+  </div>
+</section>
+
 <section id="team" class="content-section reveal">
-  <span class="section-label">05 / Team</span>
+  <span class="section-label">08 / Team</span>
   <h2>Team</h2>
   <p>This proposal is built by a two-person team pairing insurance-relevant physics with hands-on model design.</p>
   <div class="team-grid">
