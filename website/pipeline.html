@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye in the Sky &mdash; The Pipeline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="rain-container" id="rain"></div>
+<div class="streak" id="streak"></div>
+
+<nav>
+  <div class="nav-logo">Eye in the Sky<span class="dot">.</span> <span class="wip-badge">Work in Progress</span></div>
+  <ul class="page-nav">
+    <li><a href="index.html">Overview</a></li>
+    <li><a href="pipeline.html" class="active">The Pipeline</a></li>
+    <li><a href="business-case.html">Business Case</a></li>
+  </ul>
+</nav>
+
+<div class="page-subnav">
+  <a href="#fraud">Fraud Detection</a>
+  <a href="#solution">Our Solution</a>
+</div>
+
+<section id="fraud" class="content-section reveal page-top">
+  <span class="section-label">04 / Fraud Detection</span>
+  <h2>Fraud Detection</h2>
+  <p>Every claim photo runs through a metadata check before an adjuster sees it, flagging things like a missing GPS coordinate or timestamp. It only flags for review, a human adjuster still makes the final call, so the process stays fast for honest claims while catching the ones that need a second look.</p>
+
+  <h3 class="subsection-title">Severity Scoring, Real Output</h3>
+  <p>Hail size, roof material, and roof age go in, a 5-tier severity score comes out, fully rules-based and explainable tier by tier. This is real output from <code>severity_scorer.py</code>, not a mockup.</p>
+  <img src="images/severity_scorer_output.png" alt="Real terminal output from severity_scorer.py" class="code-shot">
+
+  <h3 class="subsection-title">Material Physics &amp; Monte Carlo Simulation</h3>
+  <p>Kyle built a physics-based model that calculates real hail impact energy and compares it against each material's toughness, then stress-tests it across 1,000 simulated storms per material to rank real-world risk. This is real output from his simulation, still being calibrated for realism.</p>
+  <img src="images/kyle_monte_carlo.png" alt="Real terminal output from Kyle's Monte Carlo simulation" class="code-shot">
+</section>
+
+<section id="solution" class="content-section reveal">
+  <span class="section-label">05 / Our Solution</span>
+  <h2>Our Solution</h2>
+  <p>Eye in the Sky pairs two systems: a rules-based severity score, and an AI model that verifies damage from photos. Together, they help Travelers triage properties faster after a storm.</p>
+  <ul class="gap-list">
+    <li><strong>Property-Level Hail Verification:</strong> combines hail size, roof material, and roof age into one score.</li>
+    <li><strong>Multi-Tier Severity Scoring:</strong> five tiers, each mapped to a claims action.</li>
+    <li><strong>Before/After Comparison Pipeline:</strong> flags damage that doesn't match a storm's footprint.</li>
+    <li><strong>Automated Fraud Detection:</strong> screens claim photos before an adjuster sees them.</li>
+  </ul>
+
+  <h3 class="subsection-title">Try the AI Model, Live</h3>
+  <p>This is a real, working connection to a vision model deployed on Azure AI Foundry, not a simulated result. Upload a roof photo and it will actually analyze it.</p>
+
+  <div class="demo-box">
+    <input type="file" id="photoInput" accept="image/*">
+    <button id="assessBtn" class="demo-button">Assess Damage</button>
+    <div id="demoResult" class="demo-result"></div>
+  </div>
+
+  <h3 class="subsection-title">Example Output</h3>
+  <p>In case the live demo isn't reachable right now, here's real output the model produced on an actual roof photo:</p>
+  <img src="images/hail_vision_output.png" alt="Real terminal output from hail_vision.py" class="code-shot">
+</section>
+
+<div class="page-footer-nav">
+  <a href="index.html" class="prev-page">&larr; Overview</a>
+  <a href="business-case.html" class="next-page">Business Case &rarr;</a>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <span>Eye in the Sky<span class="dot">.</span></span>
+    <span>Travelers Insurance Proposal &middot; 2026</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="demo.js"></script>
+</body>
+</html>

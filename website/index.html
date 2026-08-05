@@ -16,18 +16,19 @@
 
 <nav>
   <div class="nav-logo">Eye in the Sky<span class="dot">.</span> <span class="wip-badge">Work in Progress</span></div>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#problem">The Problem</a></li>
-    <li><a href="#travelers">What Travelers Has</a></li>
-    <li><a href="#landscape">The Landscape</a></li>
-    <li><a href="#solution">Our Solution</a></li>
-    <li><a href="#fraud">Fraud Detection</a></li>
-    <li><a href="#pilot">Pilot & Business Case</a></li>
-    <li><a href="#example">Real Example</a></li>
-    <li><a href="#team">Team</a></li>
+  <ul class="page-nav">
+    <li><a href="index.html" class="active">Overview</a></li>
+    <li><a href="pipeline.html">The Pipeline</a></li>
+    <li><a href="business-case.html">Business Case</a></li>
   </ul>
 </nav>
+
+<div class="page-subnav">
+  <a href="#home">Home</a>
+  <a href="#problem">The Problem</a>
+  <a href="#travelers">What Travelers Has</a>
+  <a href="#landscape">The Landscape</a>
+</div>
 
 <section class="hero" id="home">
   <div class="eyebrow"><span class="pulse-dot"></span> RULES-BASED SCORING + AI VERIFICATION &middot; TRAVELERS PROPOSAL</div>
@@ -115,74 +116,10 @@
   <p>Across the industry, AI-enhanced fraud cases grew from 20,000 in 2022 to over 80,000 in 2025, a 4x increase in three years.</p>
 </section>
 
-<section id="solution" class="content-section reveal">
-  <span class="section-label">04 / Our Solution</span>
-  <h2>Our Solution</h2>
-  <p>Eye in the Sky pairs two systems: a rules-based severity score, and an AI model that verifies damage from photos. Together, they help Travelers triage properties faster after a storm.</p>
-  <ul class="gap-list">
-    <li><strong>Property-Level Hail Verification:</strong> combines hail size, roof material, and roof age into one score.</li>
-    <li><strong>Multi-Tier Severity Scoring:</strong> five tiers, each mapped to a claims action.</li>
-    <li><strong>Before/After Comparison Pipeline:</strong> flags damage that doesn't match a storm's footprint.</li>
-    <li><strong>Automated Fraud Detection:</strong> screens claim photos before an adjuster sees them.</li>
-  </ul>
-</section>
-
-<section id="fraud" class="content-section reveal">
-  <span class="section-label">05 / Fraud Detection</span>
-  <h2>Fraud Detection</h2>
-  <p>Every claim photo runs through a metadata check before an adjuster sees it, flagging things like a missing GPS coordinate or timestamp. It only flags for review, a human adjuster still makes the final call, so the process stays fast for honest claims while catching the ones that need a second look.</p>
-</section>
-
-<section id="pilot" class="content-section reveal">
-  <span class="section-label">06 / Pilot &amp; Business Case</span>
-  <h2>Pilot Program &amp; Business Case</h2>
-  <p>We're recommending a phased pilot: one region, one hail season, run alongside Travelers' existing process to directly compare results before a wider rollout.</p>
-  <div class="mini-stats">
-    <div class="mini-stat">
-      <span class="mini-stat-number">92-95%</span>
-      <span class="mini-stat-label">Projected Accuracy</span>
-    </div>
-    <div class="mini-stat">
-      <span class="mini-stat-number">70%</span>
-      <span class="mini-stat-label">Time Saved</span>
-    </div>
-    <div class="mini-stat">
-      <span class="mini-stat-number">1</span>
-      <span class="mini-stat-label">Region, One Season</span>
-    </div>
-  </div>
-</section>
-
-<section id="example" class="content-section reveal">
-  <span class="section-label">07 / Real Example</span>
-  <h2>Real Example</h2>
-  <p>This isn't a mockup. Here's an actual roof photo run through our AI model, with the real output it produced.</p>
-  <div class="example-card">
-    <img src="images/roof-example.jpg" alt="Roof photo with hail damage used for testing" class="example-image">
-    <div class="example-result">
-      <span class="example-tier">Tier 3, Moderate Damage</span>
-      <p>Asphalt composition shingles with multiple circular hail impact marks and localized granule loss. Several impacts expose the darker shingle mat, consistent with moderate damage that would shorten shingle life and likely require repair.</p>
-    </div>
-  </div>
-</section>
-
-<section id="team" class="content-section reveal">
-  <span class="section-label">08 / Team</span>
-  <h2>Team</h2>
-  <p>This proposal is built by a two-person team pairing insurance-relevant physics with hands-on model design.</p>
-  <div class="team-grid">
-    <div class="team-card">
-      <h3>Kyle</h3>
-      <p class="team-role">Material Science &amp; Thresholds</p>
-      <p>Defines the impact thresholds for how different roofing materials respond to hail.</p>
-    </div>
-    <div class="team-card">
-      <h3>Anushree</h3>
-      <p class="team-role">Model &amp; Pipeline Design</p>
-      <p>Designs the scoring pipeline and model that turn that data into one damage assessment.</p>
-    </div>
-  </div>
-</section>
+<div class="page-footer-nav">
+  <span></span>
+  <a href="pipeline.html" class="next-page">The Pipeline &rarr;</a>
+</div>
 
 <footer>
   <div class="footer-content">

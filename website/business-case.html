@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye in the Sky &mdash; Business Case</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="rain-container" id="rain"></div>
+<div class="streak" id="streak"></div>
+
+<nav>
+  <div class="nav-logo">Eye in the Sky<span class="dot">.</span> <span class="wip-badge">Work in Progress</span></div>
+  <ul class="page-nav">
+    <li><a href="index.html">Overview</a></li>
+    <li><a href="pipeline.html">The Pipeline</a></li>
+    <li><a href="business-case.html" class="active">Business Case</a></li>
+  </ul>
+</nav>
+
+<div class="page-subnav">
+  <a href="#pilot">Pilot &amp; Business Case</a>
+  <a href="#example">Real Example</a>
+  <a href="#team">Team</a>
+</div>
+
+<section id="pilot" class="content-section reveal page-top">
+  <span class="section-label">06 / Pilot &amp; Business Case</span>
+  <h2>Pilot Program &amp; Business Case</h2>
+  <p>We're recommending a phased pilot: one region, one hail season, run alongside Travelers' existing process to directly compare results before a wider rollout.</p>
+  <div class="mini-stats">
+    <div class="mini-stat">
+      <span class="mini-stat-number">92-95%</span>
+      <span class="mini-stat-label">Projected Accuracy</span>
+    </div>
+    <div class="mini-stat">
+      <span class="mini-stat-number">70%</span>
+      <span class="mini-stat-label">Time Saved</span>
+    </div>
+    <div class="mini-stat">
+      <span class="mini-stat-number">1</span>
+      <span class="mini-stat-label">Region, One Season</span>
+    </div>
+  </div>
+</section>
+
+<section id="example" class="content-section reveal">
+  <span class="section-label">07 / Real Example</span>
+  <h2>Real Example</h2>
+  <p>This isn't a mockup. Here's an actual roof photo run through our AI model, with the real output it produced.</p>
+  <div class="example-card">
+    <img src="images/roof-example.jpg" alt="Roof photo with hail damage used for testing" class="example-image">
+    <div class="example-result">
+      <span class="example-tier">Tier 3, Moderate Damage</span>
+      <p>Asphalt composition shingles with multiple circular hail impact marks and localized granule loss. Several impacts expose the darker shingle mat, consistent with moderate damage that would shorten shingle life and likely require repair.</p>
+    </div>
+  </div>
+</section>
+
+<section id="team" class="content-section reveal">
+  <span class="section-label">08 / Team</span>
+  <h2>Team</h2>
+  <p>This proposal is built by a two-person team pairing insurance-relevant physics with hands-on model design.</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <h3>Kyle</h3>
+      <p class="team-role">Material Science &amp; Thresholds</p>
+      <p>Defines the impact thresholds for how different roofing materials respond to hail.</p>
+    </div>
+    <div class="team-card">
+      <h3>Anushree</h3>
+      <p class="team-role">Model &amp; Pipeline Design</p>
+      <p>Designs the scoring pipeline and model that turn that data into one damage assessment.</p>
+    </div>
+  </div>
+</section>
+
+<div class="page-footer-nav">
+  <a href="pipeline.html" class="prev-page">&larr; The Pipeline</a>
+  <span></span>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <span>Eye in the Sky<span class="dot">.</span></span>
+    <span>Travelers Insurance Proposal &middot; 2026</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
