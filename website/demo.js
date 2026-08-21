@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://localhost:5050";
+const BACKEND_URL = "https://travelers-hail-pipeline.onrender.com";
 
 const assessBtn = document.getElementById("assessBtn");
 const photoInput = document.getElementById("photoInput");
