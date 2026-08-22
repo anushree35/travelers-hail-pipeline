@@ -19,6 +19,7 @@
   <ul class="page-nav">
     <li><a href="index.html">Overview</a></li>
     <li><a href="pipeline.html" class="active">The Pipeline</a></li>
+    <li><a href="ai-model.html">The AI Model</a></li>
     <li><a href="business-case.html">Business Case</a></li>
   </ul>
 </nav>
@@ -52,24 +53,13 @@
     <li><strong>Before/After Comparison Pipeline:</strong> flags damage that doesn't match a storm's footprint.</li>
     <li><strong>Automated Fraud Detection:</strong> screens claim photos before an adjuster sees them.</li>
   </ul>
-
-  <h3 class="subsection-title">Try the AI Model, Live</h3>
-  <p>This is a real, working connection to a vision model deployed on Azure AI Foundry, not a simulated result. Upload a roof photo and it will actually analyze it.</p>
-
-  <div class="demo-box">
-    <input type="file" id="photoInput" accept="image/*">
-    <button id="assessBtn" class="demo-button">Assess Damage</button>
-    <div id="demoResult" class="demo-result"></div>
-  </div>
-
-  <h3 class="subsection-title">Example Output</h3>
-  <p>In case the live demo isn't reachable right now, here's real output the model produced on an actual roof photo:</p>
-  <img src="images/hail_vision_output.png" alt="Real terminal output from hail_vision.py" class="code-shot">
+  <p>The AI vision piece that verifies these scores from real photos, how it works, how it was built, and where it's headed next, has its own dedicated page.</p>
+  <a href="ai-model.html" class="inline-page-link">See the AI Model &rarr;</a>
 </section>
 
 <div class="page-footer-nav">
   <a href="index.html" class="prev-page">&larr; Overview</a>
-  <a href="business-case.html" class="next-page">Business Case &rarr;</a>
+  <a href="ai-model.html" class="next-page">The AI Model &rarr;</a>
 </div>
 
 <footer>
@@ -80,6 +70,5 @@
 </footer>
 
 <script src="script.js"></script>
-<script src="demo.js"></script>
 </body>
 </html>

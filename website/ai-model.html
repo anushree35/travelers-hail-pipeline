@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye in the Sky &mdash; The AI Model</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="rain-container" id="rain"></div>
+<div class="streak" id="streak"></div>
+
+<nav>
+  <div class="nav-logo">Eye in the Sky<span class="dot">.</span> <span class="wip-badge">Work in Progress</span></div>
+  <ul class="page-nav">
+    <li><a href="index.html">Overview</a></li>
+    <li><a href="pipeline.html">The Pipeline</a></li>
+    <li><a href="ai-model.html" class="active">The AI Model</a></li>
+    <li><a href="business-case.html">Business Case</a></li>
+  </ul>
+</nav>
+
+<div class="page-subnav">
+  <a href="#how-it-works">How It Works</a>
+  <a href="#how-we-built-it">How We Built It</a>
+  <a href="#try-it">Try It Live</a>
+  <a href="#example">Real Example</a>
+  <a href="#whats-next">What's Next</a>
+</div>
+
+<section id="how-it-works" class="content-section reveal page-top">
+  <span class="section-label">06 / The AI Model</span>
+  <h2>The AI Model</h2>
+  <p>This is the centerpiece of the pipeline: a vision model that looks at a real roof photo and reasons about what it sees, not a rules-based formula, an actual AI system making a judgment call.</p>
+
+  <h3 class="subsection-title">How It Works</h3>
+  <p>The model is a vision-capable model deployed on Azure AI Foundry. It doesn't classify damage the way a traditional trained image classifier would, it's a general-purpose vision model, and we direct it with a specific prompt telling it exactly what to look for: describe what it sees, estimate a severity tier from 1 to 5, and justify that tier in plain language. That means every result comes with real reasoning attached, not just a number with no explanation behind it.</p>
+
+  <h3 class="subsection-title" id="how-we-built-it">How We Built It</h3>
+  <p>Getting this working took a few real steps. First, deploying a vision-capable model on Azure AI Foundry and confirming it could actually assess hail damage from a photo. Then writing a Python script to call it directly with an image and a prompt. Then wrapping that in a Flask backend so a website could reach it over the internet instead of only from a terminal. That backend is now deployed on Render, a real hosting service, so the connection stays live even when our laptops are off.</p>
+</section>
+
+<section id="try-it" class="content-section reveal">
+  <span class="section-label">Try It Live</span>
+  <h2>Try It Live</h2>
+  <p>This is a real, working connection to a vision model deployed on Azure AI Foundry, not a simulated result. Upload a roof photo and it will actually analyze it.</p>
+
+  <div class="demo-box">
+    <input type="file" id="photoInput" accept="image/*">
+    <button id="assessBtn" class="demo-button">Assess Damage</button>
+    <div id="demoResult" class="demo-result"></div>
+  </div>
+
+  <p>In case the live demo isn't reachable right now, here's real output the model produced on an actual roof photo:</p>
+  <img src="images/hail_vision_output.png" alt="Real terminal output from hail_vision.py" class="code-shot">
+</section>
+
+<section id="example" class="content-section reveal">
+  <span class="section-label">Real Example</span>
+  <h2>Real Example</h2>
+  <p>This isn't a mockup. Here's an actual roof photo run through our AI model, with the real output it produced.</p>
+  <div class="example-card">
+    <img src="images/roof-example.jpg" alt="Roof photo with hail damage used for testing" class="example-image">
+    <div class="example-result">
+      <span class="example-tier">Tier 3, Moderate Damage</span>
+      <p>Asphalt composition shingles with multiple circular hail impact marks and localized granule loss. Several impacts expose the darker shingle mat, consistent with moderate damage that would shorten shingle life and likely require repair.</p>
+    </div>
+  </div>
+</section>
+
+<section id="whats-next" class="content-section reveal">
+  <span class="section-label">What's Next</span>
+  <h2>What's Next</h2>
+  <p>Right now, the model works through prompting alone, it hasn't been trained on our own data. A real next step would be fine-tuning it on actual historical Travelers claims once that data is available, so it learns the specific patterns in real claims instead of general knowledge.</p>
+  <p>Longer term, one direction worth exploring is a feedback loop: as adjusters review flagged cases and confirm or correct them, that feedback could be used to keep improving the model over time, similar to reinforcement learning from human feedback. That would let the system get better the more it's actually used, instead of staying static.</p>
+  <ul class="gap-list">
+    <li><strong>Fine-tuning on real data:</strong> move from general prompting to a model trained on actual Travelers claims history.</li>
+    <li><strong>Adjuster feedback loop:</strong> use adjuster corrections to improve the model over time, a reinforcement-learning-style approach.</li>
+    <li><strong>Expanded fraud forensics:</strong> extend the same vision model to pixel-level manipulation detection, not just damage assessment.</li>
+  </ul>
+</section>
+
+<div class="page-footer-nav">
+  <a href="pipeline.html" class="prev-page">&larr; The Pipeline</a>
+  <a href="business-case.html" class="next-page">Business Case &rarr;</a>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <span>Eye in the Sky<span class="dot">.</span></span>
+    <span>Travelers Insurance Proposal &middot; 2026</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="demo.js"></script>
+</body>
+</html>

@@ -198,6 +198,21 @@ nav a:hover {
   box-shadow: 0 0 20px rgba(94, 184, 255, 0.15);
 }
 
+.inline-page-link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: 8px;
+  transition: opacity 0.2s ease;
+}
+
+.inline-page-link:hover {
+  opacity: 0.75;
+}
+
 .subsection-title {
   font-size: 1.2rem;
   margin: 40px 0 12px;
