@@ -1,6 +1,6 @@
 # Travelers Hail Damage Assessment Pipeline
 
-Built for the Travelers Insurance x UConn Research Fellowship.
+Built for the Travelers Insurance x UConn Tech Park Research Fellowship.
 
 The goal is to automate the first pass of a hail damage claim, figure out how bad the damage is, and flag anything that looks suspicious.
 
