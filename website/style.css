@@ -89,20 +89,6 @@ nav {
   color: var(--accent);
 }
 
-.wip-badge {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
-  padding: 3px 10px;
-  margin-left: 6px;
-  vertical-align: middle;
-}
-
 nav ul {
   display: flex;
   flex-wrap: wrap;
