@@ -28,6 +28,7 @@
   <a href="#how-it-works">How It Works</a>
   <a href="#how-we-built-it">How We Built It</a>
   <a href="#try-it">Try It Live</a>
+  <a href="#limitation">A Real Limitation</a>
   <a href="#whats-next">What's Next</a>
 </div>
 
@@ -64,10 +65,23 @@
   </div>
 </section>
 
+<section id="limitation" class="content-section reveal">
+  <span class="section-label">A Real Limitation</span>
+  <h2>A Real Limitation</h2>
+  <p>We'd rather show you where this breaks than only show you where it works. Here's a case where the model got it wrong.</p>
+  <div class="example-card example-card--limitation">
+    <img src="images/roof-missed-damage.jpg" alt="Drone view of a roof from a real hail damage inspection" class="example-image">
+    <div class="example-result">
+      <span class="example-tier example-tier--limitation">Tier 1 &middot; Missed Damage</span>
+      <p>Drone view from a recent hail inspection. The model classified this roof as Tier 1, minimal damage, but a closer inspection found real hail impact it missed. From directly overhead, subtle bruising can look identical to ordinary roof aging or shadow. That's exactly why a human adjuster stays in the loop on every flagged claim, and why fine-tuning on real claims data, not just general prompting, is the priority next step below.</p>
+    </div>
+  </div>
+</section>
+
 <section id="whats-next" class="content-section reveal">
   <span class="section-label">What's Next</span>
   <h2>What's Next</h2>
-  <p>Right now, the model works through prompting alone, it hasn't been trained on our own data. A real next step would be fine-tuning it on actual historical Travelers claims once that data is available, so it learns the specific patterns in real claims instead of general knowledge.</p>
+  <p>The case above is a real example of why: right now, the model works through prompting alone, it hasn't been trained on our own data. A real next step would be fine-tuning it on actual historical Travelers claims once that data is available, so it learns the specific patterns in real claims instead of general knowledge.</p>
   <p>Longer term, one direction worth exploring is a feedback loop: as adjusters review flagged cases and confirm or correct them, that feedback could be used to keep improving the model over time, similar to reinforcement learning from human feedback. That would let the system get better the more it's actually used, instead of staying static.</p>
   <ul class="gap-list">
     <li><strong>Fine-tuning on real data:</strong> move from general prompting to a model trained on actual Travelers claims history.</li>

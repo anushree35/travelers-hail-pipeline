@@ -592,6 +592,15 @@ section.content-section:nth-of-type(even)::before {
   margin-bottom: 12px;
 }
 
+.example-card--limitation {
+  border-color: rgba(255, 180, 84, 0.25);
+}
+
+.example-tier--limitation {
+  color: #ffb454;
+  border-color: rgba(255, 180, 84, 0.4);
+}
+
 .example-result p {
   font-size: 0.95rem;
   margin: 0;
