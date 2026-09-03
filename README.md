@@ -33,9 +33,18 @@ Each gets a score, they add up, and you get a damage tier from 1 to 5 with a rec
 python3 severity_scorer.py
 ```
 
-### `kyle-physics/physics_model.py`
+### `kyle-physics/`
 
-Kyle's physics-based damage model. Calculates real hail impact physics (mass, terminal velocity, impact energy from hailstone diameter, using actual ice density and drag equations), compares that against each material's toughness through a sigmoid probability function, and stress-tests the result across 1,000+ Monte Carlo simulated storms per material to rank real-world risk by roofing material. Damage probabilities are still being calibrated against real historical claims data.
+Kyle's physics-based damage model, split into focused modules: `physics.py` (real hail impact physics — mass, terminal velocity, impact energy from hailstone diameter, using actual ice density and drag equations), `probability.py` (compares impact energy against each material's toughness through a sigmoid probability function, adjusted for roof age, slope, temperature, and impact count), `simulation.py` (stress-tests the result across 1,000+ Monte Carlo simulated storms per material to rank real-world risk), plus `materials.py`, `reports.py`, `visualization.py`, and `data_export.py`. Damage probabilities are still being calibrated against real historical claims data.
+
+`ai.py` adds a second AI pathway alongside the Azure Foundry integration: it sends a roof photo to Gemini and gets back structured physical features (material, dent shape, damage distribution, estimated dent depth/diameter and hail size, with a confidence score), which feed directly into the physics and probability engine above. Where the Foundry model reasons straight to a damage tier, this one extracts measurements an engineering model can act on — two different AI approaches feeding the same underlying pipeline.
+
+```
+cd kyle-physics
+pip3 install -r requirements.txt
+cp .env.example .env   # then add a real GEMINI_API_KEY
+python3 main.py
+```
 
 ### `backend/app.py`
 
