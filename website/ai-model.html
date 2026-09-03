@@ -28,6 +28,7 @@
   <a href="#how-it-works">How It Works</a>
   <a href="#how-we-built-it">How We Built It</a>
   <a href="#try-it">Try It Live</a>
+  <a href="#second-approach">A Second Approach</a>
   <a href="#limitation">A Real Limitation</a>
   <a href="#whats-next">What's Next</a>
 </div>
@@ -63,6 +64,19 @@
       <p>Asphalt composition shingles with multiple circular hail impact marks and localized granule loss. Several impacts expose the darker shingle mat, consistent with moderate damage that would shorten shingle life and likely require repair.</p>
     </div>
   </div>
+</section>
+
+<section id="second-approach" class="content-section reveal">
+  <span class="section-label">A Second Approach</span>
+  <h2>A Second Approach: Physics-Based Verification</h2>
+  <p>The Foundry model above reasons straight from a photo to a damage tier. Kyle built a second, independent pathway that does it differently: Gemini reads the physical evidence in the photo, material, dent shape, damage pattern, and an estimated hail size, and hands those measurements to the physics-based damage model instead of guessing the final tier itself. Two different AI approaches, feeding one shared engineering pipeline.</p>
+
+  <div class="demo-box">
+    <input type="file" id="photoInputGemini" accept="image/*">
+    <button id="assessBtnGemini" class="demo-button">Assess with Gemini + Physics</button>
+    <div id="demoResultGemini" class="demo-result"></div>
+  </div>
+  <p class="demo-note">Roof age, slope, and temperature aren't visible in a single overhead photo, so this demo uses reasonable placeholder averages for them. A real deployment would pull those from property records instead of guessing.</p>
 </section>
 
 <section id="limitation" class="content-section reveal">
@@ -104,5 +118,6 @@
 
 <script src="script.js"></script>
 <script src="demo.js"></script>
+<script src="gemini-demo.js"></script>
 </body>
 </html>
