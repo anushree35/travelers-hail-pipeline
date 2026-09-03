@@ -58,6 +58,8 @@ python3 app.py
 
 Needs a `.env` file (gitignored) with `AZURE_ENDPOINT` and `AZURE_API_KEY` from an Azure AI Foundry deployment.
 
+`app.py` also exposes `/assess-gemini`, wired to Kyle's `ai.py` and physics/probability engine in `kyle-physics/`. It needs a `GEMINI_API_KEY` environment variable to actually run — if it's missing, that one route reports itself as unavailable instead of taking down the rest of the backend, so the primary Azure Foundry demo is never affected by it.
+
 ### `backend/hail_vision.py`
 
 A standalone CLI script that calls the same Azure AI Foundry model directly from the terminal, given a local image path. This was the original proof-of-concept before `app.py` existed — it's **not** connected to the live website, just a local testing/debugging tool.
