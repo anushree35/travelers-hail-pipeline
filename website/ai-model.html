@@ -28,7 +28,6 @@
   <a href="#how-it-works">How It Works</a>
   <a href="#how-we-built-it">How We Built It</a>
   <a href="#try-it">Try It Live</a>
-  <a href="#whats-next">What's Next</a>
   <a href="#limitation">A Real Limitation</a>
   <a href="#second-approach">A Second Approach</a>
 </div>
@@ -39,10 +38,10 @@
   <p>This is the centerpiece of the pipeline: a vision model that looks at a real roof photo and reasons about what it sees, not a rules-based formula, an actual AI system making a judgment call.</p>
 
   <h3 class="subsection-title">How It Works</h3>
-  <p>The model is a vision-capable model deployed on Azure AI Foundry. It doesn't classify damage the way a traditional trained image classifier would, it's a general-purpose vision model, and we direct it with a specific prompt telling it exactly what to look for: describe what it sees, estimate a severity tier from 1 to 5, and justify that tier in plain language. That means every result comes with real reasoning attached, not just a number with no explanation behind it.</p>
+  <p>Azure AI Foundry hosts a general-purpose vision model, directed by one prompt: describe what you see, assign a severity tier from 1 to 5, and justify it. Every result comes with reasoning attached, not just a number.</p>
 
   <h3 class="subsection-title" id="how-we-built-it">How We Built It</h3>
-  <p>Getting this working took a few real steps. First, deploying a vision-capable model on Azure AI Foundry and confirming it could actually assess hail damage from a photo. Then writing a Python script to call it directly with an image and a prompt. Then wrapping that in a Flask backend so a website could reach it over the internet instead of only from a terminal. That backend is now deployed on Render, a real hosting service, so the connection stays live even when our laptops are off.</p>
+  <p>Deploy a vision model on Azure AI Foundry, confirm it can assess hail damage from a photo, wrap it in a Python script, then a Flask backend so a website can reach it over the internet. That backend runs on Render, live even when our laptops are off.</p>
 </section>
 
 <section id="try-it" class="content-section reveal">
@@ -66,29 +65,23 @@
   </div>
 </section>
 
-<section id="whats-next" class="content-section reveal">
-  <span class="section-label">What's Next</span>
-  <h2>What's Next</h2>
-  <p>Right now, the model works through prompting alone, it hasn't been trained on our own data. A real next step would be fine-tuning it on actual historical Travelers claims once that data is available, so it learns the specific patterns in real claims instead of general knowledge. Testing against real photos surfaces real gaps, including one we'll show you next.</p>
-  <p>Longer term, one direction worth exploring is a feedback loop: as adjusters review flagged cases and confirm or correct them, that feedback could be used to keep improving the model over time, similar to reinforcement learning from human feedback. That would let the system get better the more it's actually used, instead of staying static.</p>
-  <ul class="gap-list">
-    <li><strong>Fine-tuning on real data:</strong> move from general prompting to a model trained on actual Travelers claims history.</li>
-    <li><strong>Adjuster feedback loop:</strong> use adjuster corrections to improve the model over time, a reinforcement-learning-style approach.</li>
-    <li><strong>Expanded fraud forensics:</strong> extend the same vision model to pixel-level manipulation detection, not just damage assessment.</li>
-  </ul>
-</section>
-
 <section id="limitation" class="content-section reveal">
   <span class="section-label">A Real Limitation</span>
   <h2>A Real Limitation</h2>
-  <p>We'd rather show you where this breaks than only show you where it works. Here's a case where the model got it wrong.</p>
+  <p>We'd rather show you where this breaks than only where it works.</p>
   <div class="example-card example-card--limitation">
     <img src="images/roof-missed-damage.jpg" alt="Drone view of a roof from a real hail damage inspection" class="example-image">
     <div class="example-result">
       <span class="example-tier example-tier--limitation">Tier 1 &middot; Missed Damage</span>
-      <p>Drone view from a recent hail inspection. The model classified this roof as Tier 1, minimal damage, but a closer inspection found real hail impact it missed. From directly overhead, subtle bruising can look identical to ordinary roof aging or shadow. That's exactly why a human adjuster stays in the loop on every flagged claim, and exactly the kind of gap the fine-tuning work described above is meant to close.</p>
+      <p>Real hail impact, tiered as minimal. From directly overhead, subtle bruising can look like ordinary roof aging, exactly why a human adjuster stays in the loop on every flagged claim.</p>
     </div>
   </div>
+  <p>The model works through prompting alone, it hasn't been trained on our own data. Cases like this one are exactly why fine-tuning on real Travelers claims is the priority next step.</p>
+  <ul class="gap-list">
+    <li><strong>Fine-tuning on real data:</strong> train on actual claims history instead of general prompting.</li>
+    <li><strong>Adjuster feedback loop:</strong> use adjuster corrections to improve the model over time, RLHF-style.</li>
+    <li><strong>Expanded fraud forensics:</strong> extend the same vision model to pixel-level manipulation detection.</li>
+  </ul>
 </section>
 
 <section id="second-approach" class="content-section reveal">
