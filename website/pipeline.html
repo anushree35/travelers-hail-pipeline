@@ -27,6 +27,7 @@
 <div class="page-subnav">
   <a href="#fraud">Fraud Detection</a>
   <a href="#solution">Our Solution</a>
+  <a href="#physics">Material Physics</a>
 </div>
 
 <section id="fraud" class="content-section reveal page-top">
@@ -37,10 +38,6 @@
   <h3 class="subsection-title">Severity Scoring, Real Output</h3>
   <p>Hail size, roof material, and roof age go in, a 5-tier severity score comes out, fully rules-based and explainable tier by tier. This is real output from <code>severity_scorer.py</code>, not a mockup.</p>
   <img src="images/severity_scorer_output.png" alt="Real terminal output from severity_scorer.py" class="code-shot">
-
-  <h3 class="subsection-title">Material Physics &amp; Monte Carlo Simulation</h3>
-  <p>Kyle built a physics-based model that calculates real hail impact energy and compares it against each material's toughness, then stress-tests it across 1,000 simulated storms per material to rank real-world risk. This is real output from his simulation, still being calibrated for realism.</p>
-  <img src="images/kyle_monte_carlo.png" alt="Real terminal output from Kyle's Monte Carlo simulation" class="code-shot">
 </section>
 
 <section id="solution" class="content-section reveal">
@@ -54,6 +51,13 @@
     <li><strong>Before/After Comparison Pipeline:</strong> flags damage that doesn't match a storm's footprint.</li>
     <li><strong>Automated Fraud Detection:</strong> screens claim photos before an adjuster sees them.</li>
   </ul>
+</section>
+
+<section id="physics" class="content-section reveal">
+  <span class="section-label">06 / Material Physics &amp; Monte Carlo Simulation</span>
+  <h2>Material Physics &amp; Monte Carlo Simulation</h2>
+  <p>Kyle built a physics-based model that calculates real hail impact energy and compares it against each material's toughness, then stress-tests it across 1,000 simulated storms per material to rank real-world risk. This is real output from his simulation, still being calibrated for realism.</p>
+  <img src="images/kyle_monte_carlo.png" alt="Real terminal output from Kyle's Monte Carlo simulation" class="code-shot">
   <p>The AI vision piece that verifies these scores from real photos, how it works, how it was built, and where it's headed next, has its own dedicated page.</p>
   <a href="ai-model.html" class="inline-page-link">See the AI Model &rarr;</a>
 </section>
