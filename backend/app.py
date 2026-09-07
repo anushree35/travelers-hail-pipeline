@@ -3,6 +3,7 @@ import os
 import sys
 import tempfile
 import time
+import traceback
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
@@ -185,7 +186,17 @@ def assess_gemini():
             "risk_level": risk_level,
         }
     except Exception as exc:
-        return jsonify({"error": friendly_gemini_error(exc)}), 502
+        # TEMPORARY: full traceback in the response to pin down exactly
+        # where this is failing. Remove once diagnosed.
+        return (
+            jsonify(
+                {
+                    "error": friendly_gemini_error(exc),
+                    "debug_traceback": traceback.format_exc(),
+                }
+            ),
+            502,
+        )
     finally:
         if tmp_path and os.path.exists(tmp_path):
             os.unlink(tmp_path)
