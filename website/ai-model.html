@@ -28,8 +28,8 @@
   <a href="#how-it-works">How It Works</a>
   <a href="#how-we-built-it">How We Built It</a>
   <a href="#try-it">Try It Live</a>
-  <a href="#limitation">A Real Limitation</a>
   <a href="#second-approach">A Second Approach</a>
+  <a href="#limitation">A Real Limitation</a>
 </div>
 
 <section id="how-it-works" class="content-section reveal page-top">
@@ -65,25 +65,6 @@
   </div>
 </section>
 
-<section id="limitation" class="content-section reveal">
-  <span class="section-label">A Real Limitation</span>
-  <h2>A Real Limitation</h2>
-  <p>We'd rather show you where this breaks than only where it works.</p>
-  <div class="example-card example-card--limitation">
-    <img src="images/roof-missed-damage.jpg" alt="Drone view of a roof from a real hail damage inspection" class="example-image">
-    <div class="example-result">
-      <span class="example-tier example-tier--limitation">Tier 1 &middot; Missed Damage</span>
-      <p>Real hail impact, tiered as minimal. From directly overhead, subtle bruising can look like ordinary roof aging, exactly why a human adjuster stays in the loop on every flagged claim.</p>
-    </div>
-  </div>
-  <p>The model works through prompting alone, it hasn't been trained on our own data. Cases like this one are exactly why fine-tuning on real Travelers claims is the priority next step.</p>
-  <ul class="gap-list">
-    <li><strong>Fine-tuning on real data:</strong> train on actual claims history instead of general prompting.</li>
-    <li><strong>Adjuster feedback loop:</strong> use adjuster corrections to improve the model over time, RLHF-style.</li>
-    <li><strong>Expanded fraud forensics:</strong> extend the same vision model to pixel-level manipulation detection.</li>
-  </ul>
-</section>
-
 <section id="second-approach" class="content-section reveal">
   <span class="section-label">A Second Approach</span>
   <h2>A Second Approach: Physics-Based Verification</h2>
@@ -104,6 +85,25 @@
       <p>Estimated hail size 1.5 in, circular dents, random distribution, 88% AI confidence. Impact energy 11.07 J, damage probability 100%. "Multiple random, circular impact bruises with localized granule displacement and substrate depression characteristic of hail impact."</p>
     </div>
   </div>
+</section>
+
+<section id="limitation" class="content-section reveal">
+  <span class="section-label">A Real Limitation</span>
+  <h2>A Real Limitation</h2>
+  <p>We'd rather show you where this breaks than only where it works.</p>
+  <div class="example-card example-card--limitation">
+    <img src="images/roof-missed-damage.jpg" alt="Drone view of a roof from a real hail damage inspection" class="example-image">
+    <div class="example-result">
+      <span class="example-tier example-tier--limitation">Tier 1 &middot; Missed Damage</span>
+      <p>Real hail impact, tiered as minimal. From directly overhead, subtle bruising can look like ordinary roof aging, exactly why a human adjuster stays in the loop on every flagged claim.</p>
+    </div>
+  </div>
+  <p>The model works through prompting alone, it hasn't been trained on our own data. Cases like this one are exactly why fine-tuning on real Travelers claims is the priority next step.</p>
+  <ul class="gap-list">
+    <li><strong>Fine-tuning on real data:</strong> train on actual claims history instead of general prompting.</li>
+    <li><strong>Adjuster feedback loop:</strong> use adjuster corrections to improve the model over time, RLHF-style.</li>
+    <li><strong>Expanded fraud forensics:</strong> extend the same vision model to pixel-level manipulation detection.</li>
+  </ul>
 </section>
 
 <div class="page-footer-nav">
