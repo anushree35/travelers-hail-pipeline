@@ -3,7 +3,6 @@ import os
 import sys
 import tempfile
 import time
-import traceback
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
@@ -58,15 +57,19 @@ DEFAULT_ENV_INPUTS = {
 
 def analyze_image_with_retry(image_path, attempts=2, delay_seconds=1.5):
     """Gemini occasionally returns a transient 503 'model overloaded'
-    error under high demand. That's usually gone a couple seconds
-    later, so retry once before giving up rather than failing a demo
-    on a blip that isn't really a bug."""
+    error under high demand, worth one quick retry. A 429 quota/rate
+    limit error is NOT worth retrying, the free tier caps this model
+    at 20 requests/day, so retrying a quota failure just burns another
+    one of a very scarce budget for no chance of success."""
     last_exc = None
     for attempt in range(attempts):
         try:
             return analyze_image(image_path)
         except Exception as exc:
             last_exc = exc
+            lowered = str(exc).lower()
+            if "resource_exhausted" in lowered or "quota" in lowered or "429" in lowered:
+                raise
             if attempt < attempts - 1:
                 time.sleep(delay_seconds)
     raise last_exc
@@ -78,7 +81,7 @@ def friendly_gemini_error(exc):
     if "unavailable" in lowered or "overloaded" in lowered or "high demand" in lowered:
         return "The Gemini API is temporarily overloaded on Google's end, not a bug here. Give it a few seconds and try again."
     if "resource_exhausted" in lowered or "quota" in lowered or "rate limit" in lowered:
-        return "The Gemini API rate limit was hit. Wait a moment and try again."
+        return "The Gemini API's free-tier daily quota for this model has been used up for now. Use the example result below instead, or try again after the quota resets."
     return text
 
 PROMPT = (
@@ -186,17 +189,7 @@ def assess_gemini():
             "risk_level": risk_level,
         }
     except Exception as exc:
-        # TEMPORARY: full traceback in the response to pin down exactly
-        # where this is failing. Remove once diagnosed.
-        return (
-            jsonify(
-                {
-                    "error": friendly_gemini_error(exc),
-                    "debug_traceback": traceback.format_exc(),
-                }
-            ),
-            502,
-        )
+        return jsonify({"error": friendly_gemini_error(exc)}), 502
     finally:
         if tmp_path and os.path.exists(tmp_path):
             os.unlink(tmp_path)
