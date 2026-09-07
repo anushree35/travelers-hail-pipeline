@@ -1,6 +1,12 @@
 import math
 
 def calculate_hail_physics(hail_diameter_inches):
+    if hail_diameter_inches <= 0:
+        # No hailstone means no impact, and the velocity formula below
+        # divides by the radius, which would raise ZeroDivisionError
+        # at exactly 0 instead of just returning zero energy.
+        return {"mass": 0.0, "velocity": 0.0, "energy": 0.0}
+
     radius_m = (hail_diameter_inches * 0.0254) / 2
 
     hail_mass = (4/3) * math.pi * (radius_m ** 3) * 917
