@@ -2,6 +2,7 @@ import base64
 import os
 import sys
 import tempfile
+import time
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
@@ -52,6 +53,32 @@ DEFAULT_ENV_INPUTS = {
     "temperature": 70,
     "num_impacts": 20,
 }
+
+
+def analyze_image_with_retry(image_path, attempts=2, delay_seconds=1.5):
+    """Gemini occasionally returns a transient 503 'model overloaded'
+    error under high demand. That's usually gone a couple seconds
+    later, so retry once before giving up rather than failing a demo
+    on a blip that isn't really a bug."""
+    last_exc = None
+    for attempt in range(attempts):
+        try:
+            return analyze_image(image_path)
+        except Exception as exc:
+            last_exc = exc
+            if attempt < attempts - 1:
+                time.sleep(delay_seconds)
+    raise last_exc
+
+
+def friendly_gemini_error(exc):
+    text = str(exc)
+    lowered = text.lower()
+    if "unavailable" in lowered or "overloaded" in lowered or "high demand" in lowered:
+        return "The Gemini API is temporarily overloaded on Google's end, not a bug here. Give it a few seconds and try again."
+    if "resource_exhausted" in lowered or "quota" in lowered or "rate limit" in lowered:
+        return "The Gemini API rate limit was hit. Wait a moment and try again."
+    return text
 
 PROMPT = (
     "You are assessing hail damage on a roof from a photo, for an insurance "
@@ -131,7 +158,7 @@ def assess_gemini():
             tmp.write(image_bytes)
             tmp_path = tmp.name
 
-        features = analyze_image(tmp_path)
+        features = analyze_image_with_retry(tmp_path)
 
         inputs = {
             **DEFAULT_ENV_INPUTS,
@@ -158,7 +185,7 @@ def assess_gemini():
             "risk_level": risk_level,
         }
     except Exception as exc:
-        return jsonify({"error": str(exc)}), 500
+        return jsonify({"error": friendly_gemini_error(exc)}), 502
     finally:
         if tmp_path and os.path.exists(tmp_path):
             os.unlink(tmp_path)
