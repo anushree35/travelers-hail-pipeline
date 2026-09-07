@@ -378,6 +378,13 @@ nav a:hover {
   }
 }
 
+.stats-source {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 16px;
+}
+
 .scroll-badge {
   position: relative;
   width: 110px;
